@@ -9,10 +9,10 @@ exports.index = (_req, res) => {
       });
     }
 
-    res.render("index.html", { courses });
+    res.render("index.njk", { courses });
   });
 };
 
 exports.show = (_req, res) => {
-    res.render('index.html');
+    res.render('index.njk');
 };

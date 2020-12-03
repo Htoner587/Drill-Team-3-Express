@@ -8,13 +8,13 @@ const session = require('express-session');
 
 const app = express();
 
-nunjucks.configure("views", {
+nunjucks.configure("public/src/views", {
   autoescape: true,
   express: app,
 });
 
-app.use(express.static(path.join(__dirname, "public")));
-app.set("view engine", "html");
+app.use(express.static(path.join(__dirname, "public/src/views")));
+app.set("view engine", "njk");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
