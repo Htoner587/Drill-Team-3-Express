@@ -14,6 +14,16 @@ describe('loading express', function () {
     .get('/')
     .expect(200, done);
   });
+  it('responds to course-info/1', function testCoursePage(done){
+    request(server)
+      .get('/course-info/1')
+      .expect(200, done);
+  });
+  it('does not respond to course-info/200000000000', function testCourseInvalid(done){
+    request(server)
+      .get('/course-info/200000000000')
+      .expect(404, done);
+  });
   it('404 everything else', function testPath(done) {
     request(server)
       .get('/foo/bar')
