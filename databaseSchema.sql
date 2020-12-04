@@ -4,8 +4,6 @@ USE mapcourse;
 
  
 
-
- 
 CREATE TABLE course (
     courseID int AUTO_INCREMENT,
     courseName varchar(255) NOT NULL UNIQUE,
