@@ -5,8 +5,7 @@ const courseController = require("../public/src/controllers/course.controller.js
 
 /* GET home page. */
 router.get('/', courseController.index);
-
-/* GET home page. */
-router.get('/addcourse', courseController.show);
+router.get('/addcourse', courseController.showCreateCourse);
+router.post('/addcourse', courseController.createCourse);
 
 module.exports = router;

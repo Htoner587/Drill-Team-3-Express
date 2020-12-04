@@ -9,23 +9,12 @@ Course.getAll = async () => {
   return await sql.query("SELECT * FROM course");
 }
 
-// Course.getAll = (result) => {
-//   sql.query(
-//     "SELECT * FROM course",
-//     (err, res) => {
-//       if (err) {
-//         console.log("error: ", err);
+Course.createCourse = async (courseDetails) => {
+  const query = "INSERT INTO course(title, courseDate, locationID, description, trainerNames, attendeesInfo, courseDuration)" + 
+        "values(?, ?, ?, ?, ?, ?, ?);";
 
-//         result(null, err);
-
-//         return;
-//       }
-
-//       console.log("course: ", res);
-
-//       result(null, res);
-//     }
-//   );
-// };
+  const [title, date, loc, desc, names, info, duration] = Object.values(courseDetails);
+  await sql.query(query, [title, date, parseInt(loc), desc, names, info, duration]);
+}
 
 module.exports = Course;
