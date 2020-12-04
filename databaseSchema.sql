@@ -23,6 +23,7 @@ CREATE TABLE course (
     PRIMARY KEY(courseID),
     foreign key (locationID) references location(locationID)
 );
+INSERT INTO `mapcourse`.`location` (`locationID`) VALUES ('1');
 
 SELECT * FROM course;
 
