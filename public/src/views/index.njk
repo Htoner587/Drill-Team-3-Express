@@ -15,6 +15,7 @@ All Available Courses
         <th>Course Title</th>
         <th>Date</th>
         <th>Location</th>
+        <th></th>
     </tr>
     </thead>
     <tbody>
@@ -23,6 +24,7 @@ All Available Courses
         <td>{{course.courseName}}</td>
         <td>{{course.courseDate}}</td>
         <td>{{course.courseLocation}}</td>
+        <td><a href="/course-info/{{course.courseID}}" type="button" class="btn btn-primary">More Details</a></td>
     </tr>
     {% endfor %}
     </tbody>
