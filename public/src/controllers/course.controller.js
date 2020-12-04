@@ -7,3 +7,10 @@ exports.index = async (_req, res) => {
 exports.show = (_req, res) => {
     res.render('index.njk');
 };
+
+exports.showCourse = async (_req, res) => {
+  let courseID = _req.params.courseID;
+  let course = await Course.getByCourseID(courseID)
+  console.log(course)
+  res.render('course-info', { course });
+};
