@@ -10,11 +10,13 @@ Course.getAll = async () => {
 }
 
 Course.createCourse = async (courseDetails) => {
-  const query = "INSERT INTO course(title, courseDate, locationID, description, trainerNames, attendeesInfo, courseDuration)" + 
+  var d = courseDetails.courseDate;
+  d = d.split("-").reverse().join("/");
+  courseDetails.courseDate = d;
+  const query = "INSERT INTO course(courseName, courseDate, courseLocation, description, trainerNames, attendeesInfo, courseDuration)" + 
         "values(?, ?, ?, ?, ?, ?, ?);";
 
-  const [title, date, loc, desc, names, info, duration] = Object.values(courseDetails);
-  await sql.query(query, [title, date, parseInt(loc), desc, names, info, duration]);
+  await sql.query(query,Object.values(courseDetails));
 }
 
 module.exports = Course;
