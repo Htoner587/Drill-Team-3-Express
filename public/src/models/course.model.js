@@ -5,23 +5,27 @@ const Course = function(course) {
   this.courseName = course.courseName;
 };
 
-Course.getAll = (result) => {
-  sql.query(
-    "SELECT * FROM course",
-    (err, res) => {
-      if (err) {
-        console.log("error: ", err);
+Course.getAll = async () => {
+  return await sql.query("SELECT * FROM course");
+}
 
-        result(null, err);
+// Course.getAll = (result) => {
+//   sql.query(
+//     "SELECT * FROM course",
+//     (err, res) => {
+//       if (err) {
+//         console.log("error: ", err);
 
-        return;
-      }
+//         result(null, err);
 
-      console.log("course: ", res);
+//         return;
+//       }
 
-      result(null, res);
-    }
-  );
-};
+//       console.log("course: ", res);
+
+//       result(null, res);
+//     }
+//   );
+// };
 
 module.exports = Course;
