@@ -9,4 +9,5 @@ Course.getAll = async () => {
   return await sql.query("SELECT * FROM course");
 }
 
+
 module.exports = Course;
