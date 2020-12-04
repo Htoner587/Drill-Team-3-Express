@@ -1,15 +1,19 @@
 const mysql = require("mysql");
+const dbconfig = require('./dbconfig.json');
+const util = require('util');
 
-const connection = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME
-});
 
-connection.connect(error => {
-  if (error) throw error;
-  console.log("Successfully connected to the database.");
-});
+function wrapDB(dbconfig){
+  const pool = mysql.createPool(dbconfig)
+  return {
+    query(sql, args){
+      console.log("in query in wrapper")
+      return util.promisify(pool.query).call(pool, sql, args)
+    },
+    release () {
+      return util.promisify(pool.releaseConnection).call(pool)
+    }
+  }
+}
 
-module.exports = connection;
+module.exports = wrapDB(dbconfig);
