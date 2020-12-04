@@ -3,9 +3,6 @@ CREATE DATABASE mapcourse;
 USE mapcourse; 
 
  
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '***********';
-
- 
 CREATE TABLE course (
     courseID int AUTO_INCREMENT,
     courseName varchar(255) NOT NULL UNIQUE,
