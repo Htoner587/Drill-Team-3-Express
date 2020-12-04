@@ -3,12 +3,13 @@ var request = require('supertest');
 
 describe('loading express', function () {
   var server;
-  beforeEach(function () {
+
+  this.beforeAll(function (){
     server = require('./../app.js');
-  });
-  afterEach(function () {
-    
-  });
+  })
+  this.afterAll(function () {
+    return process.exit();
+  })
   it('responds to /', function testSlash(done) {
   request(server)
     .get('/')
